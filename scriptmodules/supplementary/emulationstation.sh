@@ -123,10 +123,10 @@ function _add_rom_emulationstation() {
 
 function depends_emulationstation() {
     local depends=(
-        libboost-system-dev libboost-filesystem-dev
-        libboost-date-time-dev libfreeimage-dev libfreetype6-dev
-        libcurl4-openssl-dev libasound2-dev cmake libsdl2-dev libsm-dev
-        libvlc-dev libvlccore-dev vlc
+        libsdl2-dev libsdl2-mixer-dev libboost-system-dev libboost-filesystem-dev libboost-date-time-dev 
++		libboost-locale-dev libboost-regex-dev libboost-thread-dev libfreeimage-dev libfreetype6-dev 
++		libeigen3-dev libcurl4-openssl-dev libasound2-dev libgl1-mesa-dev build-essential cmake 
++		fonts-droid libsm-dev libvlc-dev libvlccore-dev vlc-nox
     )
 
     isPlatform "x11" && depends+=(gnome-terminal)
@@ -136,7 +136,7 @@ function depends_emulationstation() {
 function sources_emulationstation() {
     local repo="$1"
     local branch="$2"
-    [[ -z "$repo" ]] && repo="https://github.com/RetroPie/EmulationStation"
+    [[ -z "$repo" ]] && repo="https://github.com/potras18/emulation"
     [[ -z "$branch" ]] && branch="stable"
     gitPullOrClone "$md_build" "$repo" "$branch"
 }
